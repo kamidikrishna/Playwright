@@ -1,0 +1,1 @@
+document.querySelector("demo").innerHTML = 5 + 6;

@@ -1,0 +1,12 @@
+import { test, expect, devices } from '@playwright/test';
+
+test.use({ ...devices['iPhone 13'], browserName: 'webkit', headless: false });
+
+test('Login and logout on OrangeHRM', async ({ page }) => {
+  await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+  await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
+  await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.locator('span', { hasText: 'Lil Pac' }).click();
+  await page.getByRole('menuitem', { name: 'Logout' }).click();
+});

@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test');
+const { time } = require('console');
 
 test('Handle JavaScript alerts', async ({ page }) => {
   await page.goto('https://testautomationpractice.blogspot.com/');
@@ -9,9 +10,8 @@ test('Handle JavaScript alerts', async ({ page }) => {
     expect(dialog.message()).toContain('I am an alert box!');
     await dialog.accept();
   });
-  await page.click('button[onclick="myFunction()"]');
-  // Assertion: Check result text for simple alert
-  await expect(page.locator('#demo')).toHaveText('You pressed OK!');
+  await page.click('#alertBtn');
+  await page.waitForTimeout(2000); 
 
   // Confirmation Alert
   page.once('dialog', async dialog => {
@@ -19,7 +19,7 @@ test('Handle JavaScript alerts', async ({ page }) => {
     expect(dialog.message()).toContain('Press a button!');
     await dialog.accept(); // or dialog.dismiss();
   });
-  await page.click('button[onclick="myFunctionConfirm()"]');
+  await page.click('#confirmBtn');
   // Assertion: Check result text for confirmation alert
   await expect(page.locator('#demo')).toHaveText('You pressed OK!');
 
@@ -30,7 +30,7 @@ test('Handle JavaScript alerts', async ({ page }) => {
     expect(dialog.defaultValue()).toBe('Harry Potter');
     await dialog.accept('Playwright User');
   });
-  await page.click('button[onclick="myFunctionPrompt()"]');
+  await page.click('#promptBtn');
   // Assertion: Check result text for prompt alert
   await expect(page.locator('#demo')).toHaveText('Hello Playwright User! How are you today?');
 

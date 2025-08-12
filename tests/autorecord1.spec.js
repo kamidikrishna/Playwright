@@ -1,6 +1,11 @@
 import { test, expect, devices } from '@playwright/test';
 
-test.use({ ...devices['iPhone 13'], browserName: 'webkit', headless: false });
+test.use({
+  ...devices['iPhone 13'],
+  browserName: 'webkit',
+  headless: true // ✅ works in GitHub Actions
+});
+
 
 test('Login and logout on OrangeHRM', async ({ page }) => {
   await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');

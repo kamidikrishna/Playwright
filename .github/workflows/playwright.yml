@@ -23,11 +23,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests (Chromium headless)
-        env:
-          # Force headless to avoid XServer errors
-          CI: true
-        run: npx playwright test --project=chromium --reporter=line
+      - name: Run Playwright tests (WebKit headed)
+        run: xvfb-run -a npx playwright test --project=webkit --reporter=line
 
       - name: Upload Playwright report
         if: failure()

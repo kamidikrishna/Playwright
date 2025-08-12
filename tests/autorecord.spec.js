@@ -11,6 +11,8 @@ test('Login, search PIM, and logout', async ({ page }) => {
   await page.getByRole('link', { name: 'PIM' }).click();
 
 //  await page.getByRole('button', { name: 'Reload' }).click();
-  await page.locator('span', { hasText: 'manda user' }).click();
-  await page.getByRole('menuitem', { name: 'Logout' }).click();
+  await page.locator('.oxd-userdropdown-tab').click();
+  await page.getByRole('menuitem', { name: 'Logout' }).first().click();
+
+
 });

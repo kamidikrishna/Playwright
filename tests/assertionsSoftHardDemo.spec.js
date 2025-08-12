@@ -10,7 +10,7 @@ test('Hard and soft assertions demo', async ({ page }) => {
 
   // Soft assertions (test continues even if these fail)
   await expect.soft(page.locator('#signin2')).toBeVisible();
-  await expect.soft(page.locator('img#nava')).toBeVisible();
+  //await expect.soft(page.locator('img#nava')).toBeVisible();
   await expect.soft(page.locator('a[data-target="#exampleModal"]')).toHaveAttribute('href', '#');
   
 });

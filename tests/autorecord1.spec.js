@@ -12,6 +12,6 @@ test('Login and logout on OrangeHRM', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
   await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
   await page.getByRole('button', { name: 'Login' }).click();
-  await page.locator('span', { hasText: 'Lil Pac' }).click();
-  await page.getByRole('menuitem', { name: 'Logout' }).click();
+  await page.locator('.oxd-userdropdown-tab').click();
+  await page.getByRole('menuitem', { name: 'Logout' }).first().click();
 });

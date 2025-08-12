@@ -46,3 +46,4 @@ await expect(newsletterCheckbox).toBeChecked();
   const topMenuLinks = page.locator('ul.top-menu.notmobile > li > a');
   await expect(topMenuLinks).toHaveCount(7);
 });
+
